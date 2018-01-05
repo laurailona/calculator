@@ -1,5 +1,5 @@
 /* Operator functions */
-var input = [];
+var input = 1425;
 var result= 0;
 
 var clear = function() {
@@ -23,11 +23,19 @@ var divide = function() {
 }
 
 /* Number Buttons */
-//when number button is clicked
-//convert input to array
-//add value to end of array
-//merge array
-//convert back to number
+var display = document.getElementById("display");
+
+var zeroButton = document.getElementById("num-0");
+var zeroButtonClicked = function() {
+  input = input.toString();
+  input = input.split("");
+  input.push("0");
+  input = input.join("");
+  input = parseInt(input);
+  display.textContent = input;
+}
+
+zeroButton.addEventListener("click", zeroButtonClicked);
 
 /* Operator buttons */
 //operator function
@@ -49,6 +57,7 @@ var divide = function() {
 //display input
 //when operator button is clicked
 //display result
+
 
 /* Keyboard input */
 //When key is pressed, corresponding button is clicked
