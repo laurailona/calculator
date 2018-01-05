@@ -3,10 +3,70 @@
   <head>
     <meta charset="utf-8">
     <title>Calculator</title>
-    <link rel="stylesheet" type="text/css" src="styles/style.css">
+    <link rel="stylesheet" href="styles/style.css">
   </head>
   <body>
+    <header>
+      <h1><strong>Calculate</strong> something!</h1>
+    </header>
+    
+    <main>
+      <div class="outer-container">
+        <div class="calculator-container">
+          <div class="display-container">
+            <div class="number-display">
+              19273
+            </div>
+          </div>
+          <div class="button-container">
+            <div class="num-container">
+              <div class="num-row-1">
+                <div class="full-width-button"><button id="clear">C</button></div>
+              </div>
+              <div class="num-row-2">
+                <div class="num-button"><button id="num-7">7</button></div>
+                <div class="num-button"><button id="num-8">8</button></div>
+                <div class="num-button"><button id="num-9">9</button></div>
+              </div>
+              <div class="num-row-3">
+                <div class="num-button"><button id="num-4">4</button></div>
+                <div class="num-button"><button id="num-5">5</button></div>
+                <div class="num-button"><button id="num-6">6</button></div>
+              </div>
+              <div class="num-row-4">
+                <div class="num-button"><button id="num-1">1</button></div>
+                <div class="num-button"><button id="num-2">2</button></div>
+                <div class="num-button"><button id="num-3">3</button></div>
+              </div>
+              <div class="num-row-5">
+                <div class="zero-button"><button id="num-0">0</button></div>
+                <div class="point-button"><button id="poin">.</button></div>
+              </div>
+            </div>
+            <div class="operator-container">
+              <div class="operator-row">
+                <div class="full-width-button"><button id="delete"><code><--</code></button></div>
+              </div>
+              <div class="operator-row">
+                <div class="half-width-button"><button id="plus-operator">+</button></div>
+                <div class="half-width-button"><button id="minus-operator">-</button></div>
+              </div>
+              <div class="operator-row">
+                <div class="half-width-button"><button id="multiply-operator">*</button></div>
+                <div class="half-width-button"><button id="divide-operator">/</button></div>
+              </div>
+              <div class="operator-row">
+                <div class="full-width-button"><button id="equals">=</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <footer>
+    </footer>
 
-  <script href="scripts/main.js"></script>
+  <script src="scripts/main.js"></script>
   </body>
 </html>
