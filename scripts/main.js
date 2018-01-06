@@ -3,27 +3,6 @@ var input = "";
 var inputString = "";
 var result= 0;
 
-var clear = function() {
-  result = 0;
-}
-
-var add = function() {
-  result += input;
-}
-
-var substract = function() {
-  result -= input;
-}
-
-var multiply = function() {
-  result *= input;
-}
-
-var divide = function() {
-  result = result / input;
-}
-
-//input = parseInt(input);
 /* Number Buttons */
 var display = document.getElementById("display");
 var displayInput = function() {
@@ -104,10 +83,10 @@ var nineButtonClicked = function() {
 }
 nineButton.addEventListener("click", nineButtonClicked);
 /* Operator buttons */
-//operator function
-//display result
-//input is reset to []
 
+//Operator buttons are NOT working correctly
+//Input and operators should get stored in arrays
+//Equal button should then loop through arrays and calculate result
 var plusButton = document.getElementById("plus-operator");
 var plusButtonClicked = function() {
   input = parseInt(input);
@@ -128,31 +107,26 @@ var minusButtonClicked = function() {
 };
 minusButton.addEventListener("click", minusButtonClicked);
 
+/* Multiply and divide not working 
+
 var multiplyButton = document.getElementById("multiply-operator");
 var multiplyButtonClicked = function() {
   input = parseInt(input);
-  if(result === 0){result = 1;};
   result *= input;
   display.textContent = result;
   input = "";
 };
 multiplyButton.addEventListener("click", multiplyButtonClicked);
-//if equals is clicked
-//result is displayed
-//result is set back to 0
-//input is reset to []
 
-//if delete is clicked
-//input converted to array
-//last value is popped off
-//input converted back to number
-
-/* Display */
-//when number button is clicked
-//display input
-//when operator button is clicked
-//display result
-
+var divideButton = document.getElementById("divide-operator");
+var divideButtonClicked = function() {
+  input = parseInt(input);
+  result /= input;
+  display.textContent = result;
+  input = "";
+};
+divideButton.addEventListener("click", divideButtonClicked);
+//////////////////////// */
 
 /* Keyboard input */
 //When key is pressed, corresponding button is clicked
