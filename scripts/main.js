@@ -3,6 +3,22 @@ var input = "";
 var inputString = "";
 var result= 0;
 
+var multiply = function(num1, num2) {
+  result = num1 * num2;
+};
+
+var divide = function(num1, num2) {
+  result = num1 / num2;
+};
+
+var add = function(num1, num2) {
+  result = num1 + num2;
+};
+
+var substract = function(num1, num2) {
+  result = num1 - num2;
+};
+
 /* Number Buttons */
 var display = document.getElementById("display");
 var displayInput = function() {
@@ -87,46 +103,59 @@ nineButton.addEventListener("click", nineButtonClicked);
 //Operator buttons are NOT working correctly
 //Input and operators should get stored in arrays
 //Equal button should then loop through arrays and calculate result
+var inputArray = [];
+var operator = "";
+var operate = function() {
+  inputArray.push(parseInt(input));
+  inputArray.push(operator);
+  input = "";
+  operator = "";
+};
+
 var plusButton = document.getElementById("plus-operator");
 var plusButtonClicked = function() {
-  input = parseInt(input);
-  result = parseInt(result);
-  result += input;
-  display.textContent = result;
-  input = "";
+  operator = "+";
+  operate();
 };
 plusButton.addEventListener("click", plusButtonClicked);
 
 var minusButton = document.getElementById("minus-operator");
 var minusButtonClicked = function() {
-  input = parseInt(input);
-  result = parseInt(result);
-  result -= input;
-  display.textContent = result;
-  input = "";
+  operator = "-";
+  operate();
 };
 minusButton.addEventListener("click", minusButtonClicked);
 
-/* Multiply and divide not working 
-
 var multiplyButton = document.getElementById("multiply-operator");
 var multiplyButtonClicked = function() {
-  input = parseInt(input);
-  result *= input;
-  display.textContent = result;
-  input = "";
+  operator = "*";
+  operate();
 };
 multiplyButton.addEventListener("click", multiplyButtonClicked);
 
 var divideButton = document.getElementById("divide-operator");
 var divideButtonClicked = function() {
-  input = parseInt(input);
-  result /= input;
-  display.textContent = result;
-  input = "";
+  operator = "/";
+  operate();
 };
 divideButton.addEventListener("click", divideButtonClicked);
-//////////////////////// */
 
+/* EQUALS BUTTON AND FINAL CALCULATION */
+var equalsButton = document.getElementById("equals");
+var finalCalculation = function() {
+  //evaluate inputArray
+
+  //return result
+};
+
+equalsButton.addEventListener("click", finalCalculation);
+
+var clearButton = document.getElementById("clear");
+var clear = function() {
+  input = "";
+  inputArray = [];
+  display.textContent = input;
+};
+clearButton.addEventListener("click", clear);
 /* Keyboard input */
 //When key is pressed, corresponding button is clicked
