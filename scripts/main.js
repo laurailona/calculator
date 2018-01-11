@@ -14,6 +14,15 @@ var displayInput = function() {
   display.textContent = input;
 };
 
+var backspaceButton = document.getElementById("delete-button");
+var backspace = function() {
+  input = input.split("");
+  input.pop();
+  input = input.join("");
+  display.textContent = input;
+};
+backspaceButton.addEventListener("click", backspace);
+
 var pointButton = document.getElementById("point");
 var pointButtonClicked = function() {
   inputString = ".";
@@ -136,7 +145,7 @@ divideButton.addEventListener("click", divideButtonClicked);
 /* EQUALS BUTTON AND FINAL CALCULATION */
 var equalsButton = document.getElementById("equals");
 var finalCalculation = function() {
-  inputArray.push(parseInt(input));
+  inputArray.push(parseFloat(input));
   calculationDisplay.textContent = inputArray.join(""); 
   input = "";
   operator = "";
