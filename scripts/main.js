@@ -15,13 +15,13 @@ var displayInput = function() {
 };
 
 var backspaceButton = document.getElementById("delete-button");
-var backspace = function() {
+var backspaceButtonClicked = function() {
   input = input.split("");
   input.pop();
   input = input.join("");
   display.textContent = input;
 };
-backspaceButton.addEventListener("click", backspace);
+backspaceButton.addEventListener("click", backspaceButtonClicked);
 
 var pointButton = document.getElementById("point");
 var pointButtonClicked = function() {
@@ -99,6 +99,7 @@ var nineButtonClicked = function() {
   displayInput();
 }
 nineButton.addEventListener("click", nineButtonClicked);
+
 /* Operator buttons */
 
 //Operator buttons are NOT working correctly
@@ -173,7 +174,6 @@ var finalCalculation = function() {
       };
       };
   };
-  console.log(inputArray);
   for(let i=0;i < inputArray.length;i++) { //second round - add and substract
     if(isNaN(inputArray[i])) {
       let tempResult;
@@ -187,13 +187,11 @@ var finalCalculation = function() {
         tempResult = firstNumber + secondNumber;
         inputArray.splice(previousPosition, 3, tempResult);
         i = i -2;
-        console.log(inputArray);
         break;
         case "-":
         tempResult = firstNumber - secondNumber;
         inputArray.splice(previousPosition, 3, tempResult);
         i = i -2;
-        console.log(inputArray);
         break;
       };
     };
@@ -212,5 +210,80 @@ var clear = function() {
   calculationDisplay.textContent = inputArray.join(""); 
 };
 clearButton.addEventListener("click", clear);
-/* Keyboard input */
-//When key is pressed, corresponding button is clicked
+/* ALLOW KEYBOARD INPUT */
+window.addEventListener("keydown", function(event) {
+  switch(event.keyCode) {
+    case 48:
+    case 96:
+    zeroButtonClicked();
+    break;
+    case 49:
+    case 97:
+    oneButtonClicked();
+    break;
+    case 50:
+    case 98:
+      twoButtonClicked();
+      break;
+    case 51:
+    case 99:
+      threeButtonClicked();
+      break;
+    case 52:
+    case 100:
+      fourButtonClicked();
+      break;
+    case 53:
+    case 101:
+      fiveButtonClicked();
+      break;
+    case 54:
+    case 102:
+      sixButtonClicked();
+      break;
+    case 55:
+    case 103:
+      sevenButtonClicked();
+      break;
+    case 56:
+    case 104:
+      eightButtonClicked();
+      break;
+    case 57:
+    case 105:
+      nineButtonClicked();
+      break;
+    case 190:
+    case 110:
+      pointButtonClicked();
+      break;
+    case 8:
+      backspaceButtonClicked();
+      break;
+    case 173:
+    case 109:
+    case 189:
+      minusButtonClicked();
+      break;
+    case 107:
+      plusButtonClicked();
+      break;
+    case 106:
+      multiplyButtonClicked();
+      break;
+    case 111:
+    case 191:
+      event.preventDefault();
+      divideButtonClicked();
+      break;
+    case 67:
+      clear();
+      break;
+    case 13:
+    case 61:
+      finalCalculation();
+      break;
+    default:
+      break;
+  };
+  });
