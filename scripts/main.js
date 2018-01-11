@@ -16,6 +16,9 @@ var displayInput = function() {
 
 var backspaceButton = document.getElementById("delete-button");
 var backspaceButtonClicked = function() {
+  if(input.charAt(input.length-1) == ".") { //allows decimal points again if decimal point gets deleted
+    hasDecimalPoint = false;
+  };
   input = input.split("");
   input.pop();
   input = input.join("");
@@ -23,10 +26,14 @@ var backspaceButtonClicked = function() {
 };
 backspaceButton.addEventListener("click", backspaceButtonClicked);
 
+var hasDecimalPoint = false;
 var pointButton = document.getElementById("point");
 var pointButtonClicked = function() {
-  inputString = ".";
-  displayInput();
+  if(hasDecimalPoint === false) {
+    inputString = ".";
+    displayInput();
+  };
+  hasDecimalPoint = true;
 };
 pointButton.addEventListener("click", pointButtonClicked);
 
@@ -108,6 +115,7 @@ var operate = function() {
   inputArray.push(operator);
   input = "";
   operator = "";
+  hasDecimalPoint = false;
   calculationDisplay.textContent = inputArray.join(""); 
 };
 
@@ -200,6 +208,9 @@ var finalCalculation = function() {
   if(divideByZero) {
     display.textContent = "ERROR: you can't divide by zero";
   };
+  if(isNaN(inputArray[0])) {
+    display.textContent = "ERROR: that makes no sense";
+  };
   inputArray = [];
   divideByZero = false;
 };
@@ -210,6 +221,7 @@ var clearButton = document.getElementById("clear");
 var clear = function() {
   input = "";
   inputArray = [];
+  hasDecimalPoint = false;
   display.textContent = input;
   calculationDisplay.textContent = inputArray.join(""); 
 };
