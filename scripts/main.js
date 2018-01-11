@@ -14,6 +14,13 @@ var displayInput = function() {
   display.textContent = input;
 };
 
+var pointButton = document.getElementById("point");
+var pointButtonClicked = function() {
+  inputString = ".";
+  displayInput();
+};
+pointButton.addEventListener("click", pointButtonClicked);
+
 var zeroButton = document.getElementById("num-0");
 var zeroButtonClicked = function() {
   inputString = "0";
@@ -91,7 +98,7 @@ nineButton.addEventListener("click", nineButtonClicked);
 var inputArray = [];
 var operator = "";
 var operate = function() {
-  inputArray.push(parseInt(input));
+  inputArray.push(parseFloat(input));
   inputArray.push(operator);
   input = "";
   operator = "";
