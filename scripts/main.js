@@ -1,26 +1,11 @@
-/* Operator functions */
 var input = "";
 var inputString = "";
 var result= 0;
-
-var multiply = function(num1, num2) {
-  result = num1 * num2;
-};
-
-var divide = function(num1, num2) {
-  result = num1 / num2;
-};
-
-var add = function(num1, num2) {
-  result = num1 + num2;
-};
-
-var substract = function(num1, num2) {
-  result = num1 - num2;
-};
+var inputDisplay = "";
 
 /* Number Buttons */
 var display = document.getElementById("display");
+var calculationDisplay = document.getElementById("calculation-display");
 var displayInput = function() {
   input = input.toString();
   input = input.split("");
@@ -110,6 +95,7 @@ var operate = function() {
   inputArray.push(operator);
   input = "";
   operator = "";
+  calculationDisplay.textContent = inputArray.join(""); 
 };
 
 var plusButton = document.getElementById("plus-operator");
@@ -144,6 +130,7 @@ divideButton.addEventListener("click", divideButtonClicked);
 var equalsButton = document.getElementById("equals");
 var finalCalculation = function() {
   inputArray.push(parseInt(input));
+  calculationDisplay.textContent = inputArray.join(""); 
   input = "";
   operator = "";
   for(let i=0;i < inputArray.length;i++) { //first round - multiply and divide only
@@ -195,6 +182,8 @@ var finalCalculation = function() {
       };
     };
   };
+  display.textContent = inputArray.toString();
+  inputArray = [];
 };
 
 equalsButton.addEventListener("click", finalCalculation);
@@ -204,6 +193,7 @@ var clear = function() {
   input = "";
   inputArray = [];
   display.textContent = input;
+  calculationDisplay.textContent = inputArray.join(""); 
 };
 clearButton.addEventListener("click", clear);
 /* Keyboard input */
