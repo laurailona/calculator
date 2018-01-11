@@ -9,6 +9,12 @@ body {
   height: 100%;
 }
 
+h1 {
+  text-align: center;
+  font-family: 'Comfortaa', cursive;
+  font-size: 36px;
+  font-weight: 300;
+}
 
 .outer-container { /*Needs to be vertically alligned, not working atm */
   height: 100%;
@@ -88,6 +94,7 @@ button {
   width: 100%;
   height: 100%;
   font-size: 22px;
+  font-family: 'Comfortaa', cursive;
 }
 
 button:hover {

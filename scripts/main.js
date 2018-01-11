@@ -101,10 +101,6 @@ var nineButtonClicked = function() {
 nineButton.addEventListener("click", nineButtonClicked);
 
 /* Operator buttons */
-
-//Operator buttons are NOT working correctly
-//Input and operators should get stored in arrays
-//Equal button should then loop through arrays and calculate result
 var inputArray = [];
 var operator = "";
 var operate = function() {
@@ -146,6 +142,7 @@ divideButton.addEventListener("click", divideButtonClicked);
 /* EQUALS BUTTON AND FINAL CALCULATION */
 var equalsButton = document.getElementById("equals");
 var finalCalculation = function() {
+  let divideByZero = false;
   inputArray.push(parseFloat(input));
   calculationDisplay.textContent = inputArray.join(""); 
   input = "";
@@ -165,9 +162,12 @@ var finalCalculation = function() {
         i = i -2;
         break;
         case "/":
-        tempResult = firstNumber / secondNumber;
-        inputArray.splice(previousPosition, 3, tempResult);
-        i = i -2;
+          if(secondNumber == 0){
+            divideByZero = true;
+          };
+          tempResult = firstNumber / secondNumber;
+          inputArray.splice(previousPosition, 3, tempResult);
+          i = i -2;
         break;
         default:
         break;
@@ -197,7 +197,11 @@ var finalCalculation = function() {
     };
   };
   display.textContent = inputArray.toString();
+  if(divideByZero) {
+    display.textContent = "ERROR: you can't divide by zero";
+  };
   inputArray = [];
+  divideByZero = false;
 };
 
 equalsButton.addEventListener("click", finalCalculation);
