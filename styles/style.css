@@ -41,8 +41,20 @@ body {
 }
 
 .number-display {
-  padding: 10px;
+  font-family: 'VT323', monospace;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: flex-end;
 }
+
+.input-display {
+  font-size: 34px;
+}
+
+.calc-display {
+  font-size: 22px;
+  }
 
 .button-container {
   margin: 0 10px;
