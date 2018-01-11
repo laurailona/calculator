@@ -143,9 +143,58 @@ divideButton.addEventListener("click", divideButtonClicked);
 /* EQUALS BUTTON AND FINAL CALCULATION */
 var equalsButton = document.getElementById("equals");
 var finalCalculation = function() {
-  //evaluate inputArray
-
-  //return result
+  inputArray.push(parseInt(input));
+  input = "";
+  operator = "";
+  for(let i=0;i < inputArray.length;i++) { //first round - multiply and divide only
+    if(isNaN(inputArray[i])) { 
+      let tempResult;
+      let position = parseInt(i);
+      let previousPosition = position - 1;
+      let nextPosition = position + 1;
+      let firstNumber = inputArray[previousPosition];
+      let secondNumber = inputArray[nextPosition];
+      switch(inputArray[i]) {
+        case "*":
+        tempResult = firstNumber * secondNumber;
+        inputArray.splice(previousPosition, 3, tempResult);
+        i = i -2;
+        break;
+        case "/":
+        tempResult = firstNumber / secondNumber;
+        inputArray.splice(previousPosition, 3, tempResult);
+        i = i -2;
+        break;
+        default:
+        break;
+      };
+      };
+  };
+  console.log(inputArray);
+  for(let i=0;i < inputArray.length;i++) { //second round - add and substract
+    if(isNaN(inputArray[i])) {
+      let tempResult;
+      let position = parseInt(i);
+      let previousPosition = position - 1;
+      let nextPosition = position + 1;
+      let firstNumber = inputArray[previousPosition];
+      let secondNumber = inputArray[nextPosition];
+      switch(inputArray[i]) {
+        case "+":
+        tempResult = firstNumber + secondNumber;
+        inputArray.splice(previousPosition, 3, tempResult);
+        i = i -2;
+        console.log(inputArray);
+        break;
+        case "-":
+        tempResult = firstNumber - secondNumber;
+        inputArray.splice(previousPosition, 3, tempResult);
+        i = i -2;
+        console.log(inputArray);
+        break;
+      };
+    };
+  };
 };
 
 equalsButton.addEventListener("click", finalCalculation);
