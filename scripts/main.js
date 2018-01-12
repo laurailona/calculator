@@ -1,14 +1,11 @@
 "use strict";
-var input = "";
-var inputString = "";
-var result= 0;
-var inputDisplay = "";
-var hasDecimalPoint = false;
+let input = "";
+let inputString = "";
 
 /* Number Buttons */
-var display = document.getElementById("display");
-var calculationDisplay = document.getElementById("calculation-display");
-var displayInput = function() {
+const display = document.getElementById("display");
+const calculationDisplay = document.getElementById("calculation-display");
+let displayInput = function() {
   input = input.toString();
   input = input.split("");
   input.push(inputString);
@@ -16,11 +13,11 @@ var displayInput = function() {
   display.textContent = input;
 };
 
-var backspaceButton = document.getElementById("delete-button");
-var backspaceButtonClicked = function() {
+const backspaceButton = document.getElementById("delete-button");
+let backspaceButtonClicked = function() {
   if(input.charAt(input.length-1) == ".") { //allows decimal points again if decimal point gets deleted
     hasDecimalPoint = false;
-  };
+  }
   input = input.split("");
   input.pop();
   input = input.join("");
@@ -28,90 +25,91 @@ var backspaceButtonClicked = function() {
 };
 backspaceButton.addEventListener("click", backspaceButtonClicked);
 
-var pointButton = document.getElementById("point");
-var pointButtonClicked = function() {
+let hasDecimalPoint = false;
+const pointButton = document.getElementById("point");
+let pointButtonClicked = function() {
   if(hasDecimalPoint === false) {
     inputString = ".";
     displayInput();
-  };
+  }
   hasDecimalPoint = true;
 };
 pointButton.addEventListener("click", pointButtonClicked);
 
-var zeroButton = document.getElementById("num-0");
-var zeroButtonClicked = function() {
+const zeroButton = document.getElementById("num-0");
+let zeroButtonClicked = function() {
   inputString = "0";
   displayInput();
 };
 zeroButton.addEventListener("click", zeroButtonClicked);
 
-var oneButton = document.getElementById("num-1");
-var oneButtonClicked = function() {
+const oneButton = document.getElementById("num-1");
+let oneButtonClicked = function() {
   inputString = "1";
   displayInput();
-}
+};
 oneButton.addEventListener("click", oneButtonClicked);
 
-var twoButton = document.getElementById("num-2");
-var twoButtonClicked = function() {
+const twoButton = document.getElementById("num-2");
+let twoButtonClicked = function() {
   inputString = "2";
   displayInput();
-}
+};
 twoButton.addEventListener("click", twoButtonClicked);
 
-var threeButton = document.getElementById("num-3");
-var threeButtonClicked = function() {
+const threeButton = document.getElementById("num-3");
+let threeButtonClicked = function() {
   inputString = "3";
   displayInput();
-}
+};
 threeButton.addEventListener("click", threeButtonClicked);
 
-var fourButton = document.getElementById("num-4");
-var fourButtonClicked = function() {
+const fourButton = document.getElementById("num-4");
+let fourButtonClicked = function() {
   inputString = "4";
   displayInput();
-}
+};
 fourButton.addEventListener("click", fourButtonClicked);
 
-var fiveButton = document.getElementById("num-5");
-var fiveButtonClicked = function() {
+const fiveButton = document.getElementById("num-5");
+let fiveButtonClicked = function() {
   inputString = "5";
   displayInput();
-}
+};
 fiveButton.addEventListener("click", fiveButtonClicked);
 
-var sixButton = document.getElementById("num-6");
-var sixButtonClicked = function() {
+const sixButton = document.getElementById("num-6");
+let sixButtonClicked = function() {
   inputString = "6";
   displayInput();
-}
+};
 sixButton.addEventListener("click", sixButtonClicked);
 
-var sevenButton = document.getElementById("num-7");
-var sevenButtonClicked = function() {
+const sevenButton = document.getElementById("num-7");
+let sevenButtonClicked = function() {
   inputString = "7";
   displayInput();
-}
+};
 sevenButton.addEventListener("click", sevenButtonClicked);
 
-var eightButton = document.getElementById("num-8");
-var eightButtonClicked = function() {
+const eightButton = document.getElementById("num-8");
+let eightButtonClicked = function() {
   inputString = "8";
   displayInput();
-}
+};
 eightButton.addEventListener("click", eightButtonClicked);
 
-var nineButton = document.getElementById("num-9");
-var nineButtonClicked = function() {
+const nineButton = document.getElementById("num-9");
+let nineButtonClicked = function() {
   inputString = "9";
   displayInput();
-}
+};
 nineButton.addEventListener("click", nineButtonClicked);
 
 /* Operator buttons */
-var inputArray = [];
-var operator = "";
-var operate = function() {
+let inputArray = [];
+let operator = "";
+let operate = function() {
   inputArray.push(parseFloat(input));
   inputArray.push(operator);
   input = "";
@@ -120,37 +118,37 @@ var operate = function() {
   calculationDisplay.textContent = inputArray.join(""); 
 };
 
-var plusButton = document.getElementById("plus-operator");
-var plusButtonClicked = function() {
+const plusButton = document.getElementById("plus-operator");
+let plusButtonClicked = function() {
   operator = "+";
   operate();
 };
 plusButton.addEventListener("click", plusButtonClicked);
 
-var minusButton = document.getElementById("minus-operator");
-var minusButtonClicked = function() {
+const minusButton = document.getElementById("minus-operator");
+let minusButtonClicked = function() {
   operator = "-";
   operate();
 };
 minusButton.addEventListener("click", minusButtonClicked);
 
-var multiplyButton = document.getElementById("multiply-operator");
-var multiplyButtonClicked = function() {
+const multiplyButton = document.getElementById("multiply-operator");
+let multiplyButtonClicked = function() {
   operator = "*";
   operate();
 };
 multiplyButton.addEventListener("click", multiplyButtonClicked);
 
-var divideButton = document.getElementById("divide-operator");
-var divideButtonClicked = function() {
+const divideButton = document.getElementById("divide-operator");
+let divideButtonClicked = function() {
   operator = "/";
   operate();
 };
 divideButton.addEventListener("click", divideButtonClicked);
 
 /* EQUALS BUTTON AND FINAL CALCULATION, CLEAR BUTTON */
-var equalsButton = document.getElementById("equals");
-var finalCalculation = function() {
+const equalsButton = document.getElementById("equals");
+let finalCalculation = function() {
   let divideByZero = false;
   inputArray.push(parseFloat(input));
   calculationDisplay.textContent = inputArray.join(""); 
@@ -171,18 +169,18 @@ var finalCalculation = function() {
         i = i -2;
         break;
         case "/":
-          if(secondNumber == 0){
+          if(secondNumber === 0){
             divideByZero = true;
-          };
+          }
           tempResult = firstNumber / secondNumber;
           inputArray.splice(previousPosition, 3, tempResult);
           i = i -2;
         break;
         default:
         break;
-      };
-      };
-  };
+      }
+      }
+  }
   for(let i=0;i < inputArray.length;i++) { //second round - add and substract
     if(isNaN(inputArray[i])) {
       let tempResult;
@@ -202,16 +200,16 @@ var finalCalculation = function() {
         inputArray.splice(previousPosition, 3, tempResult);
         i = i -2;
         break;
-      };
-    };
-  };
+      }
+    }
+  }
   display.textContent = inputArray.toString(); //the only number remaining in array is the result, which will be displayed as string
   if(divideByZero) {
     display.textContent = "ERROR: you can't divide by zero";
-  };
+  }
   if(isNaN(inputArray[0])) {
     display.textContent = "ERROR: that makes no sense";
-  };
+  }
   inputArray = [];
   divideByZero = false;
   hasDecimalPoint = false;
@@ -219,8 +217,8 @@ var finalCalculation = function() {
 
 equalsButton.addEventListener("click", finalCalculation);
 
-var clearButton = document.getElementById("clear");
-var clear = function() {
+const clearButton = document.getElementById("clear");
+let clear = function() {
   input = "";
   inputArray = [];
   hasDecimalPoint = false;
@@ -303,5 +301,5 @@ window.addEventListener("keydown", function(event) {
       break;
     default:
       break;
-  };
+  }
   });
