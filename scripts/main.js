@@ -1,3 +1,4 @@
+"use strict";
 var input = "";
 var inputString = "";
 var result= 0;
@@ -147,7 +148,7 @@ var divideButtonClicked = function() {
 };
 divideButton.addEventListener("click", divideButtonClicked);
 
-/* EQUALS BUTTON AND FINAL CALCULATION */
+/* EQUALS BUTTON AND FINAL CALCULATION, CLEAR BUTTON */
 var equalsButton = document.getElementById("equals");
 var finalCalculation = function() {
   let divideByZero = false;
@@ -204,7 +205,7 @@ var finalCalculation = function() {
       };
     };
   };
-  display.textContent = inputArray.toString();
+  display.textContent = inputArray.toString(); //the only number remaining in array is the result, which will be displayed as string
   if(divideByZero) {
     display.textContent = "ERROR: you can't divide by zero";
   };
