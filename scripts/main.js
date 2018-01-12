@@ -3,6 +3,7 @@ var input = "";
 var inputString = "";
 var result= 0;
 var inputDisplay = "";
+var hasDecimalPoint = false;
 
 /* Number Buttons */
 var display = document.getElementById("display");
@@ -27,7 +28,6 @@ var backspaceButtonClicked = function() {
 };
 backspaceButton.addEventListener("click", backspaceButtonClicked);
 
-var hasDecimalPoint = false;
 var pointButton = document.getElementById("point");
 var pointButtonClicked = function() {
   if(hasDecimalPoint === false) {
@@ -214,6 +214,7 @@ var finalCalculation = function() {
   };
   inputArray = [];
   divideByZero = false;
+  hasDecimalPoint = false;
 };
 
 equalsButton.addEventListener("click", finalCalculation);
